@@ -29,10 +29,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cors({
-    origin: ["http://localhost:5173", "https://spendsmart-obnt.onrender.com"],
-    credentials: true
-}));
+app.use(cors());
 
 
 app.use(cookieParser())
@@ -50,6 +47,13 @@ app.use('/friends', friendsRouter)
 app.use('/split', splitsRouter)
 
 app.use('/track', trackRouter)
+
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'ExpenseEase Backend API is running', version: '1.0.0' });
+})
+
+
+
 
 
 
