@@ -25,14 +25,15 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 
-app.use(bodyParser.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://spendsmart-obnt.onrender.com"],
     credentials: true
 }));
+
 
 app.use(cookieParser())
 
