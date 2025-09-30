@@ -95,6 +95,9 @@ const deleteFolderInCloudinary = async (folder) => {
     return true;
   } catch (err) {
     console.error("deleteFolderInCloudinary failed:", err);
+    if (err.error && err.error.message.includes("Can't find folder")) {
+      return true; // Folder doesn't exist, but resources deleted if any, consider successful
+    }
     return null;
   }
 };
