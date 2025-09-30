@@ -1,4 +1,4 @@
-# EXPENSEEASE - Expense and Bill Management Tool
+# EXPENSEEASE - Budget & Bill Organizer
 
 ExpenseEase is a comprehensive expense and bill management application that helps users track expenses, split bills with friends, and digitally store receipts and warranties. Built with a modern full-stack architecture using React on the frontend and Node.js with Express on the backend.
 
