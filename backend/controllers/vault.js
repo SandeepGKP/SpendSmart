@@ -94,13 +94,14 @@ const renewWarranty = async (req, res) => {
 
 const getReceipt = async (req, res) => {
     try {
+        console.log("getting receipt", req.body.recId);
         const result = await fetchReceipt(req.userDetails.email, req.userDetails.userId, req.body.recId);
         if (!result) {
             throw "failed";
         }
         res.status(200).json(result);
     } catch (err) {
-        console.log(err);
+        console.log("fetch error:", err);
         res.status(500).send();
     }
 }
