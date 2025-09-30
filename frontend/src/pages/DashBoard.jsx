@@ -96,7 +96,7 @@ export default function DashBoard() {
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full bg-white overflow-auto pb-[200px]  text-stone-700 rounded-l-xl">
-        <div className=" hidden 2xl:flex max-w-[1500px] mx-auto flex-col space-y-4">
+        <div className=" hidden 2xl:flex max-w-[1200px] mx-auto flex-col space-y-4">
           <div className="flex mx-4 relative mt-4 p-2 px-6 justify-center items-center uppercase text-[35px] font-bold rounded-xl bg-[#9f21e3] text-white">
             <span>Dashboard</span>
             <select
