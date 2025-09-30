@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-    origin: 'https://spendsmart-obnt.onrender.com',
+    origin: ['https://spendsmart-obnt.onrender.com','http://localhost:3000'],
     credentials: true
 }));
 
