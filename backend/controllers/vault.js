@@ -2,6 +2,8 @@ const { t3UploadToCloudinary, t2UploadToCloudinary, deleteFolderInCloudinary } =
 const { generateId } = require('../util/nodemailer')
 const { addReceipt, fetchTags, deleteTag, appendTag, addWarranty, fetchReceipts, fetchReceipt, removeReceipt, fetchWarranties, fetchWarranty, removeWarranty, changeExp } = require('../models/vault')
 const fs = require('fs/promises');
+const path = require('path')
+const { root } = require('../util/path')
 
 const imagePreview = async (req, res) => {
     try {
