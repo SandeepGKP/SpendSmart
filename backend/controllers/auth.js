@@ -171,7 +171,7 @@ const signIn = async (req, res) => {
                 const token = jwt.sign(userData, process.env.JWT_SECRET, { expiresIn: "30d" });
                 const expiryDate = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30);
                 console.log(token, expiryDate);
-                res.cookie('token', token, { expires: expiryDate });
+                res.cookie('token', token, { expires: expiryDate, httpOnly: true, sameSite: 'None', secure: true });
                 res.status(200).json("success");
             } else {
                 res.status(500).json("password wrong")
