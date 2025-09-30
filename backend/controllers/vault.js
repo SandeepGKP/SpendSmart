@@ -6,10 +6,14 @@ const fs = require('fs/promises');
 const imagePreview = async (req, res) => {
     try {
         console.log(req.file);
-        const filename = req.file.path;
+        let filename = req.file.path;
+        if (!filename) {
+            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            await fs.writeFile(filename, req.file.buffer);
+        }
         const name = req.params.par1;
         const result = await t2UploadToCloudinary(filename, `${req.userDetails.userId}vaultImagePreview${name}`, `temp/${req.userDetails.userId}`, req.file.mimetype);
-        await fs.rm(req.file.path);
+        await fs.rm(filename);
         if (!result) {
             throw "failed";
         }

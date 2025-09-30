@@ -89,9 +89,13 @@ const changeUpi = async (req, res) => {
 const profilePicUpload = async (req, res) => {
     try {
         console.log(req.file);
-        const filename = req.file.path;
+        let filename = req.file.path;
+        if (!filename) {
+            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            await fs.writeFile(filename, req.file.buffer);
+        }
         const result = await t1UploadToCloudinary(filename, `${req.userDetails.userId}profilePic`, '500', '500', `users/${req.userDetails.userId}/profile`);
-        await fs.rm(req.file.path);
+        await fs.rm(filename);
         if (!result) {
             throw "failed";
         }
@@ -109,9 +113,13 @@ const profilePicUpload = async (req, res) => {
 const profilePicPreview = async (req, res) => {
     try {
         console.log(req.file);
-        const filename = req.file.path;
+        let filename = req.file.path;
+        if (!filename) {
+            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            await fs.writeFile(filename, req.file.buffer);
+        }
         const result = await t1UploadToCloudinary(filename, `${req.userDetails.userId}profilePicPreview`, '500', '500', `temp/${req.userDetails.userId}`);
-        await fs.rm(req.file.path);
+        await fs.rm(filename);
         if (!result) {
             throw "failed";
         }
@@ -125,16 +133,22 @@ const profilePicPreview = async (req, res) => {
 const qrCodeUpload = async (req, res) => {
     try {
         console.log(req.file);
-        const filename = req.file.path;
-        const newFileName = path.join(root, 'buffers', 'cropped' + req.file.filename);
+        let filename = req.file.path;
+        let filenameProperty = req.file.filename;
+        if (!filename) {
+            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            filenameProperty = filename.split('/').pop(); // filename without path
+            await fs.writeFile(filename, req.file.buffer);
+        }
+        const newFileName = path.join(root, 'buffers', 'cropped' + filenameProperty);
         const croppingRes = await detectAndCropQRCode(filename, newFileName);
         if (!croppingRes) {
-            await fs.rm(req.file.path);
+            if (!req.file.path) await fs.rm(filename);
             await fs.rm(newFileName);
             throw "cropunsuccessful";
         }
         const result = await t1UploadToCloudinary(newFileName, `${req.userDetails.userId}qrCode`, '500', '500', `users/${req.userDetails.userId}/profile`);
-        await fs.rm(req.file.path);
+        await fs.rm(filename);
         await fs.rm(newFileName);
         if (!result) {
             throw "failed";
@@ -153,16 +167,22 @@ const qrCodeUpload = async (req, res) => {
 const qrCodePreview = async (req, res) => {
     try {
         console.log(req.file);
-        const filename = req.file.path;
-        const newFileName = path.join(root, 'buffers', 'cropped' + req.file.filename);
+        let filename = req.file.path;
+        let filenameProperty = req.file.filename;
+        if (!filename) {
+            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            filenameProperty = filename.split('/').pop(); // filename without path
+            await fs.writeFile(filename, req.file.buffer);
+        }
+        const newFileName = path.join(root, 'buffers', 'cropped' + filenameProperty);
         const croppingRes = await detectAndCropQRCode(filename, newFileName);
         if (!croppingRes) {
-            await fs.rm(req.file.path);
+            if (!req.file.path) await fs.rm(filename);
             await fs.rm(newFileName);
             throw "cropunsuccessful";
         }
         const result = await t1UploadToCloudinary(newFileName, `${req.userDetails.userId}qrCode`, '500', '500', `temp/${req.userDetails.userId}`);
-        await fs.rm(req.file.path);
+        await fs.rm(filename);
         await fs.rm(newFileName);
         if (!result) {
             throw "failed";
@@ -182,6 +202,3 @@ exports.profilePicPreview = profilePicPreview;
 exports.getPublicProfile = getPublicProfile;
 exports.qrCodePreview = qrCodePreview;
 exports.qrCodeUpload = qrCodeUpload;
-
-
-
