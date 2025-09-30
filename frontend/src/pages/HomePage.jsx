@@ -35,7 +35,7 @@ export default function HomePage() {
         <title>Home | EXPENSEEASE</title>
         <meta name="description" content="Home" />
       </Helmet>
-    <div className="h-full w-full pb-[200px] bg-slate-50 overflow-auto text-stone-700 rounded-l-xl rounded-r-xl lg:rounded-r-none">
+      <div className="h-full w-full pb-[200px] bg-slate-50 overflow-auto text-stone-700 rounded-l-xl rounded-r-xl lg:rounded-r-none">
         <header className="flex flex-col  sm:pt-[100px]  justify-center items-center space-y-[10px]">
           <h2 className="text-[32px] sm:text-[46px] xl:text-[52px] mx-[20px] text-center font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Welcome to{" "}
@@ -114,29 +114,30 @@ export default function HomePage() {
         </div>
 
         <div className="flex flex-col mt-[200px]">
-          <h1 className="font-bold capitalize underline underline-offset-4 text-[35px] text-center">
+          <h1 className="text-[22px] sm:text-[36px] xl:text-[42px] mx-[20px] text-center font-serif bg-gradient-to-r from-red-500 via-purple-500 to-green-500 bg-clip-text text-transparent underline underline-offset-4 decoration-black">
             Find me here
           </h1>
 
-          <div className="flex justify-center  w-[80%] rounded-3xl mx-auto pt-[30px] pb-[70px] items-center mt-6 gap-28">
+
+          <div className="flex justify-center  w-[80%] rounded-3xl mx-auto pt-[30px] pb-[70px] items-center mt-6 gap-20">
             <div className="text-lg relative flex justify-center items-center ">
               <img src={email} className="w-[55px] " alt="" />
               <span className="items-center absolute bottom-[-10px] translate-y-[100%] right-[50%] translate-x-[50%] min-w-[110px] justify-center bg-white rounded-xl px-2  h-fit flex w-fit py-1">
                 {copyStatus ? (
                   <span className=" rounded-lg px-2">
-                <span
-                  style={{ fontFamily: "fredoka" }}
-                  className="lowercase  text-green-400"
-                >
-                  Copied
-                </span>
+                    <span
+                      style={{ fontFamily: "fredoka" }}
+                      className="lowercase  text-green-400"
+                    >
+                      copied
+                    </span>
                   </span>
                 ) : (
                   <button
                     onClick={() => copyEmail("sandeepnishad638672@gmail.com")}
                     className=" hover:bg-stone-100 rounded-lg px-2"
                   >
-                    <span className="text-base text-nowrap font-medium ">
+                    <span className="text-base text-nowrap font-medium font-serif">
                       Copy Email
                     </span>
                   </button>
