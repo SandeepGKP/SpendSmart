@@ -87,34 +87,34 @@ export default function WidgetSquare() {
         )}
       </div>
 
-      <div className="flex flex-1 flex-grow space-x-4">
+      <div className="flex flex-1 flex-grow space-x-2">
         <Link
           to={"/track"}
-          className="rounded-2xl aspect-square  group  duration-500 flex-grow flex justify-center items-center bg-[#f7ebfd] flex-1 p-4"
+          className="rounded-2xl  aspect-auto  group  duration-500 flex-grow flex justify-center items-center bg-[#f7ebfd] flex-1 p-1"
         >
           <img
             src={exit}
-            className="w-[100px] group-hover:scale-[120%] duration-500"
+            className="w-[50px] group-hover:scale-[120%] duration-500"
             alt=""
           />
         </Link>
         <Link
           to={"/track/protected/create"}
-          className="rounded-2xl aspect-square  group  duration-500 flex-grow flex justify-center items-center bg-[#f7ebfd] flex-1 p-4"
+          className="rounded-2xl aspect-auto  group  duration-500 flex-grow flex justify-center items-center bg-[#f7ebfd] flex-1 p-1"
         >
           <img
             src={add}
-            className="w-[100px] group-hover:scale-[120%] duration-500"
+            className="w-[50px] group-hover:scale-[120%] duration-500"
             alt=""
           />
         </Link>
         <Link
           to={"/track/protected/categories"}
-          className="rounded-2xl aspect-square  group  duration-500 flex-grow flex justify-center items-center bg-[#f7ebfd] flex-1 p-4"
+          className="rounded-2xl aspect-auto group  duration-500 flex-grow flex justify-center items-center bg-[#f7ebfd] flex-1 p-1"
         >
           <img
             src={application}
-            className="w-[100px] group-hover:scale-[120%] duration-500"
+            className="w-[50px] group-hover:scale-[120%] duration-500"
             alt=""
           />
         </Link>
