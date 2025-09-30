@@ -43,21 +43,87 @@ const t1UploadToCloudinary = async (filePath, publicId, width, height, folder) =
  */
 const t2UploadToCloudinary = async (filePath, publicId, folder, mimetype) => {
   try {
-    const res = await cloudinary.uploader.upload(filePath, {
-      public_id: publicId,
-      folder: folder,
-      resource_type: "auto" // for images or PDFs
-    });
+    let cleanPublicId = publicId;
 
-    console.log("Uploaded:", res.secure_url);
+    // For PDFs, ensure publicId doesn't include file extension to avoid double extensions
+    if (mimetype === 'application/pdf') {
+      // Remove any existing file extension from publicId
+      const lastDotIndex = publicId.lastIndexOf('.');
+      if (lastDotIndex > 0 && lastDotIndex < publicId.length - 1) {
+        cleanPublicId = publicId.substring(0, lastDotIndex);
+      }
+    }
 
-    // Prepare return object
-    const result = {
-      previewUrl: res.secure_url, // preview for frontend
-      uploadUrl: res.secure_url   // main upload URL
-    };
+    if (mimetype.startsWith('image/')) {
+      // For images, upload normally
+      const uploadOptions = {
+        public_id: cleanPublicId,
+        folder: folder,
+        resource_type: 'image',
+        access_mode: "authenticated"// Ensure public access for all uploaded resources
+      };
 
-    return result;
+      const res = await cloudinary.uploader.upload(filePath, uploadOptions);
+      console.log("Uploaded image:", res.secure_url);
+
+      const result = {
+        previewUrl: res.secure_url, // image preview
+        uploadUrl: res.secure_url   // same for images
+      };
+
+      return result;
+    } else if (mimetype === 'application/pdf') {
+      // For PDFs, upload twice: thumbnail (first page as image) and full PDF (raw)
+
+      // Upload thumbnail (first page as image)
+      const thumbnailOptions = {
+        public_id: `${cleanPublicId}_thumb`,
+        folder: folder,
+        resource_type: 'image',
+        format: 'jpg',
+        access_mode: "authenticated"
+      };
+
+      const thumbnailRes = await cloudinary.uploader.upload(filePath, thumbnailOptions);
+      console.log("Uploaded PDF thumbnail:", thumbnailRes.secure_url);
+
+      // Upload full PDF as raw
+      const pdfOptions = {
+        public_id: `${cleanPublicId}`,
+        folder: folder,
+        resource_type: 'raw',
+        format: 'pdf',
+        access_mode: "authenticated"
+      };
+
+      const pdfRes = await cloudinary.uploader.upload(filePath, pdfOptions);
+      console.log("Uploaded PDF:", pdfRes.secure_url);
+
+      const result = {
+        previewUrl: thumbnailRes.secure_url, // image thumbnail for frontend preview
+        uploadUrl: pdfRes.secure_url      // full PDF URL
+      };
+
+      return result;
+    } else {
+      // Fallback for other types
+      const uploadOptions = {
+        public_id: cleanPublicId,
+        folder: folder,
+        resource_type: 'auto',
+        access_mode: "authenticated"
+      };
+
+      const res = await cloudinary.uploader.upload(filePath, uploadOptions);
+      console.log("Uploaded:", res.secure_url);
+
+      const result = {
+        previewUrl: res.secure_url,
+        uploadUrl: res.secure_url
+      };
+
+      return result;
+    }
   } catch (err) {
     console.error("t2UploadToCloudinary failed:", err);
     return null;

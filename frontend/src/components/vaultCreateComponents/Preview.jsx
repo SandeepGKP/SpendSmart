@@ -13,6 +13,9 @@ export default function Preview({ file, stopLoading, hide }) {
   function previewClick() {
     dialogRef.current.showModal();
   }
+  function pdfPreview() {
+    window.open(file.url, '_blank');
+  }
   function errorLoading(event) {
     console.log(event);
   }
@@ -57,7 +60,7 @@ export default function Preview({ file, stopLoading, hide }) {
             <div className="flex flex-col">
               <div className="flex space-x-16">
                 <div className="flex flex-col">
-                  <button onClick={previewClick}>
+                  <button onClick={pdfPreview}>
                     <img
                       src={pdf}
                       onLoad={loadComplete}

@@ -10,6 +10,9 @@ export default function Preview({ file }) {
   function previewClick() {
     dialogRef.current.showModal();
   }
+  function pdfPreview() {
+    window.open(file.previewUrl, '_blank');
+  }
   function errorLoading(event) {
     console.log(event);
   }
@@ -53,7 +56,7 @@ export default function Preview({ file }) {
             <div className="flex flex-col">
               <div className="flex space-x-16">
                 <div className="flex flex-col">
-                  <button onClick={previewClick}>
+                  <button onClick={pdfPreview}>
                     <img
                       src={pdf}
                       className="w-[200px] hover:opacity-75 h-[200px] flex justify-center items-center"
@@ -98,11 +101,7 @@ export default function Preview({ file }) {
       <dialog className="relative scrollbar-hidden" ref={dialogRef}>
         <div className="">
           {file && file.metaData.type === "application/pdf" ? (
-            <img
-              src={file ? file.previewUrl : ""}
-              className="max-w-[80vw]"
-              alt=""
-            />
+            <iframe src={file ? file.previewUrl : ""} className="w-[80vw] h-[80vh]" />
           ) : (
             <img
               src={file ? file.previewUrl : ""}

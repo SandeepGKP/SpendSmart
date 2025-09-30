@@ -15,7 +15,7 @@ const imagePreview = async (req, res) => {
             await fs.writeFile(filename, req.file.buffer);
         }
         const name = req.params.par1;
-        const result = await t2UploadToCloudinary(filename, `${req.userDetails.userId}vaultImagePreview${name}`, `temp/${req.userDetails.userId}`, req.file.mimetype);
+        const result = await t2UploadToCloudinary(filename, `${req.userDetails.userId}vaultImagePreview${name}`, `vault/${req.userDetails.userId}`, req.file.mimetype);
         await fs.rm(filename);
         if (!result) {
             throw "failed";
