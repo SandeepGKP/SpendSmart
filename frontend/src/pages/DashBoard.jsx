@@ -92,7 +92,7 @@ export default function DashBoard() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | BILLBUD</title>
+        <title> Dashboard | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full bg-white overflow-auto pb-[200px]  text-stone-700 rounded-l-xl">
