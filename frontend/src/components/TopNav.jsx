@@ -105,10 +105,10 @@ export default function TopNav() {
           </div>
           <div className="flex flex-col mt-6 items-center">
             <p className="text-center border-b-2 border-neutral-500 font-semibold text-sm sm:text-base lg:text-lg mb-4">
-              🎉 Exciting Update: Enhanced Responsiveness on BillBud! 🚀
+              🎉 Exciting Update: Enhanced Responsiveness on EXPENSEEASE! 🚀
             </p>
             <p className="text-center font-medium text-xs sm:text-sm lg:text-base">
-              We're thrilled to announce that BillBud is now even more
+              We're thrilled to announce that EXPENSEEASE is now even more
               user-friendly with our latest responsiveness enhancements! You can
               now enjoy a seamless experience on both mobile and desktop devices
               for our popular BillSplit and BillVault features. Whether you're

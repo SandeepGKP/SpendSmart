@@ -447,7 +447,7 @@ export default function SignUp({ login, disableButton, enableButton }) {
           <>
             <div className="flex flex-col mt-16">
               <h1 className="text-3xl font-semibold text-[#9f21e3] text-center">
-                Welcome to BillBud!!
+                Welcome to EXPENSEEASE!!
               </h1>
               <img
                 src={welcome}

@@ -16,7 +16,7 @@ export default function TransactionCreate() {
   return (
     <>
       <Helmet>
-        <title>Create Transaction | BILLBUD</title>
+        <title>Create Transaction | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full flex-grow whiteScr  overflow-auto sm:px-16 pt-8 pb-[200px] text-stone-700 rounded-l-xl">

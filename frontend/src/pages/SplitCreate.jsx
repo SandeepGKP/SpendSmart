@@ -18,7 +18,7 @@ export default function SplitCreate() {
   return (
     <>
       <Helmet>
-        <title> Create SPLIT | BILLBUD</title>
+        <title> Create SPLIT | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full  bg-white whiteScr overflow-auto pb-[80px] rounded-l-xl">

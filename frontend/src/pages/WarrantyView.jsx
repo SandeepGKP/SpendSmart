@@ -67,7 +67,7 @@ export default function WarrantyView() {
   return (
     <>
       <Helmet>
-        <title> {data.details.warName} | Warranty | BILLBUD</title>
+        <title> {data.details.warName} | Warranty | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       {modalOpen ? (

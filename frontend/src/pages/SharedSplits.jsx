@@ -12,7 +12,7 @@ export default function SharedSplits() {
   return (
     <>
       <Helmet>
-        <title>Shared SPLITS | BILLBUD</title>
+        <title>Shared SPLITS | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full bg-white overflow-auto pb-[200px] text-stone-700 rounded-r-2xl lg:rounded-r-none rounded-l-2xl">

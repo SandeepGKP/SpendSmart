@@ -78,7 +78,7 @@ export default function SavedSplitView() {
   return (
     <>
       <Helmet>
-        <title>{data.splitInfo.splitName} | Saved SPLIT | BILLBUD</title>
+        <title>{data.splitInfo.splitName} | Saved SPLIT | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full interlaced overflow-auto pb-[200px] text-stone-700 rounded-r-2xl lg:rounded-r-none rounded-l-2xl">

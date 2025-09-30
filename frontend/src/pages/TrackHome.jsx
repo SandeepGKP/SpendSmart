@@ -20,7 +20,7 @@ export default function TrackHome() {
   return (
     <>
       <Helmet>
-        <title> TRACK Home | BILLBUD</title>
+        <title> TRACK Home | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full bg-white overflow-auto pb-[200px] text-stone-700 rounded-l-xl">

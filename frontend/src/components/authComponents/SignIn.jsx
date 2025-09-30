@@ -389,7 +389,7 @@ export default function SignIn({ signup, disableButton, enableButton }) {
                 </p>
                 <p className="mt-4 text-center text-lg">
                   Redirecting to{" "}
-                  <span className="text-[#9f21e3]">BillBud Home</span> in{" "}
+                  <span className="text-[#9f21e3]">EXPENSEEASE Home</span> in{" "}
                   <span className="mx-2 text-neutral-500">{time}</span>{" "}
                 </p>
               </div>

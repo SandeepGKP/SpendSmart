@@ -68,7 +68,7 @@ export default function ReceiptView() {
   return (
     <>
       <Helmet>
-        <title> {data.details.recName} | Receipt | BILLBUD</title>
+        <title> {data.details.recName} | Receipt | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       {modalOpen ? (

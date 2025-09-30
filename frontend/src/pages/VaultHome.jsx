@@ -17,7 +17,7 @@ export default function VaultHome() {
   return (
     <>
       <Helmet>
-        <title> VAULT Home | BILLBUD</title>
+        <title> VAULT Home | EXPENSEEASE</title>
         <meta name="description" content="Friends" />
       </Helmet>
       <div className="h-full w-full bg-white overflow-auto pb-[200px] text-stone-700 rounded-l-xl rounded-r-xl lg:rounded-r-none">
