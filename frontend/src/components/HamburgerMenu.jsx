@@ -108,7 +108,7 @@ export default function HamburgerMenu() {
         onClick={backClick}
         className="absolute w-[100vw] z-[100] h-[100vh] top-0 bg-black/30 left-0 "
       ></div>
-      <div className="absolute z-[110] flex flex-col top-0 left-0 bg-white w-[100px] h-screen">
+      <div className="absolute z-[110] flex flex-col top-0 left-0 bg-white w-auto h-screen">
         <div className="">
           <Logo>EXPENSEEASE</Logo>
         </div>
