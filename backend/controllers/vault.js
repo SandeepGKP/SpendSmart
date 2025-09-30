@@ -11,6 +11,7 @@ const imagePreview = async (req, res) => {
         let filename = req.file.path;
         if (!filename) {
             filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            await fs.mkdir(path.dirname(filename), { recursive: true });
             await fs.writeFile(filename, req.file.buffer);
         }
         const name = req.params.par1;
