@@ -125,7 +125,7 @@ export default function DashBoard() {
           <CategoricalHeirarchy />
         </div>
 
-        <div className="flex flex-col mt-[200px] items-center 2xl:hidden">
+        <div className="flex flex-col mt-[200px] items-center xl:hidden">
           <div className="relative">
             <img className="w-[200px] opacity-75" src={responsive} alt="" />
             <img
