@@ -124,7 +124,7 @@ export default function SwipeAnimation() {
               <div
                 key={index}
                 style={{ backgroundColor: index === ind ? "black" : "" }}
-                className="w-[10px] h-[10px] rounded-full duration-700 border-2 border-black"
+                className="w-[15px] h-[10px] rounded-full duration-700 border-2 border-black"
               ></div>
             );
           })}
