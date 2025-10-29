@@ -1,15 +1,15 @@
-const nodemailer = require('nodemailer');
 const { v4 } = require('uuid')
+const sgMail = require('@sendgrid/mail')
 
-const auth = nodemailer.createTransport({
-    service: "gmail",
-    secure: true,
-    port: 465,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+const authTransport = {
+    sendMail: (options, callback) => {
+        sgMail.send(options)
+            .then(() => callback(null, { messageId: 'sent' }))
+            .catch((error) => callback(error, null));
     }
-})
+}
 
 const generateOtp = () => {
     let ans = "";
@@ -35,7 +35,7 @@ const generateId = () => {
     return str;
 }
 
-exports.authTransport = auth;
+exports.authTransport = authTransport;
 exports.generateOtp = generateOtp;
 exports.generateUserId = generateUserId;
 exports.generateId = generateId;
