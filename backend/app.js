@@ -25,8 +25,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 app.use(cors({
-    origin: ['https://spendsmart-obnt.onrender.com','http://localhost:5173'],
-    credentials: true
+    origin: ['https://spendsmart-obnt.onrender.com','http://localhost:5173', 'http://localhost:3000'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
 }));
 
 app.use(bodyParser.json());
