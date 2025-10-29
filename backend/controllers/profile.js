@@ -91,7 +91,7 @@ const profilePicUpload = async (req, res) => {
         console.log(req.file);
         let filename = req.file.path;
         if (!filename) {
-            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            filename = path.join('/tmp', Date.now() + req.file.originalname);
             await fs.writeFile(filename, req.file.buffer);
         }
         const result = await t1UploadToCloudinary(filename, `${req.userDetails.userId}profilePic`, '500', '500', `users/${req.userDetails.userId}/profile`);
@@ -115,7 +115,7 @@ const profilePicPreview = async (req, res) => {
         console.log(req.file);
         let filename = req.file.path;
         if (!filename) {
-            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            filename = path.join('/tmp', Date.now() + req.file.originalname);
             await fs.writeFile(filename, req.file.buffer);
         }
         const result = await t1UploadToCloudinary(filename, `${req.userDetails.userId}profilePicPreview`, '500', '500', `temp/${req.userDetails.userId}`);
@@ -136,11 +136,11 @@ const qrCodeUpload = async (req, res) => {
         let filename = req.file.path;
         let filenameProperty = req.file.filename;
         if (!filename) {
-            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            filename = path.join('/tmp', Date.now() + req.file.originalname);
             filenameProperty = filename.split('/').pop(); // filename without path
             await fs.writeFile(filename, req.file.buffer);
         }
-        const newFileName = path.join(root, 'buffers', 'cropped' + filenameProperty);
+        const newFileName = path.join('/tmp', 'cropped' + filenameProperty);
         const croppingRes = await detectAndCropQRCode(filename, newFileName);
         if (!croppingRes) {
             if (!req.file.path) await fs.rm(filename);
@@ -170,11 +170,11 @@ const qrCodePreview = async (req, res) => {
         let filename = req.file.path;
         let filenameProperty = req.file.filename;
         if (!filename) {
-            filename = path.join(root, 'buffers', Date.now() + req.file.originalname);
+            filename = path.join('/tmp', Date.now() + req.file.originalname);
             filenameProperty = filename.split('/').pop(); // filename without path
             await fs.writeFile(filename, req.file.buffer);
         }
-        const newFileName = path.join(root, 'buffers', 'cropped' + filenameProperty);
+        const newFileName = path.join('/tmp', 'cropped' + filenameProperty);
         const croppingRes = await detectAndCropQRCode(filename, newFileName);
         if (!croppingRes) {
             if (!req.file.path) await fs.rm(filename);
