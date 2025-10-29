@@ -24,15 +24,14 @@ const server = http.createServer(app)
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(cors({
     origin: ['https://spendsmart-obnt.onrender.com','http://localhost:5173'],
     credentials: true
 }));
+
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(cookieParser())
