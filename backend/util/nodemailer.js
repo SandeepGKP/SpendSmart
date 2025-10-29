@@ -17,7 +17,7 @@ const generateOtp = () => {
         const num = Math.floor((Math.random() * 10000) % 10);
         ans = ans + num;
     }
-    console.log(num, ans);
+    console.log(ans);
     return ans;
 }
 
