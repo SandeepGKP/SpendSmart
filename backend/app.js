@@ -25,7 +25,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 app.use(cors({
-    origin: ['https://spendsmart-obnt.onrender.com','http://localhost:5173'],
+    origin: ['https://spendsmart-obnt.onrender.com','http://localhost:5173','https://spend-smart-tan.vercel.app/'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
