@@ -49,7 +49,7 @@ app.use('/split', splitsRouter)
 
 app.use('/track', trackRouter)
 
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
     res.status(200).json({ message: 'ExpenseEase Backend API is running', version: '1.0.0' });
 })
 
