@@ -38,10 +38,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser())
 
-app.get('/health', (req, res) => {
-    res.status(200).json({ message: 'ExpenseEase Backend API is running', version: '1.0.0' });
-})
-
 app.use('/auth', authRouter)
 
 
